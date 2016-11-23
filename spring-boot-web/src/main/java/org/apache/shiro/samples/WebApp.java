@@ -50,7 +50,6 @@ public class WebApp { //NOPMD
     private static Logger log = LoggerFactory.getLogger(WebApp.class);
 
     public static void main(String[] args) {
-
         SpringApplication.run(WebApp.class, args);
     }
 

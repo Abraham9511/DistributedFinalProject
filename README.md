@@ -12,5 +12,18 @@ DistributedFinalProject/shiro/samples/spring-boot-web
 ```
 #### 运行
 ```
-mvn jetty:run
+mvn tomcat:run
 ```
+
+### 修改
+#### 返回照片 
+添加 ImageController.java以及/resources/images文件夹
+##### Controller部分
+找到上下文，然后返回字节流
+默认只接受jpg的格式
+![](./image/imageController.png)
+
+#### View 部分
+照片直接放在resources/images下面
+只能存放.jpg的照片！
+![](./image/insert_image.png)
