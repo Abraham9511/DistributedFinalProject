@@ -17,7 +17,7 @@ import java.io.InputStream;
 @Controller
 public class ImageController {
     @ResponseBody
-    @RequestMapping(value = "/image/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    @RequestMapping(value = "/images/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] ImageReturn(@PathVariable("id") String id) throws IOException {
         String path = "/images/" + id +".jpg";
         System.out.println(path);
