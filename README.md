@@ -8,11 +8,12 @@ Intellij
  当前工作路径应该设置为
 
 ```
-DistributedFinalProject/shiro/samples/spring-boot-web
+DistributedFinalProject/spring-boot-web
 ```
 #### 运行
 ```
-mvn tomcat:run
+mvn tomcat:run // 编译
+再启动applicatin
 ```
 
 ### 修改
