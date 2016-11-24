@@ -26,4 +26,5 @@ mvn tomcat:run
 #### View 部分
 照片直接放在resources/images下面
 只能存放.jpg的照片！
+请求路径的时候要求使用 /images/xxx.jpg 的类似路径
 ![](./image/insert_image.png)
