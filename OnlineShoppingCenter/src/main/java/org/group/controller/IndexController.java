@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.Map;
 
 @Controller
 public class IndexController {
+
+
 
     @ModelAttribute(value = "subject")
     public Subject subject() {
@@ -24,8 +27,10 @@ public class IndexController {
 
     @SuppressWarnings("Duplicates")
     @RequestMapping(value={"/", "/index.html", "/index", "/index/*" })
-    public String home(@RequestParam(value = "city", required = false) String city, Model model) throws UnsupportedEncodingException {
+    public String home(HttpSession session, @RequestParam(value = "city", required = false) String city, Model model) throws UnsupportedEncodingException {
         String name = "World";
+
+
         String city1 = "Beijing";
         String city2 = "Shanghai";
         String city3 = "Guangzhou";
@@ -34,12 +39,91 @@ public class IndexController {
 
         if (city != null) {
             curCity = city;
+            System.out.println("CITY"+city);
         }
 
-        System.out.println("CITY:"+city);
 
-        String commodity[] = {"Rice rolls", "Porridge", "Chicken wings", "Hamburg", "French fries", "Coffee"};
-        String price[] = {"$2", "$1", "$3", "$4", "$3", "$2"};
+        session.setAttribute("CITY", curCity);
+
+        model.addAttribute("curCity", curCity);
+        model.addAttribute("city1", city1);
+        model.addAttribute("city2", city2);
+        model.addAttribute("city3", city3);
+
+        String commodity_Guangzhou[] = {"Rice rolls", "Porridge", "Chicken wings", "Hamburg", "French fries", "Coffee"};
+        String commodity_Guangzhou_pic[] = {"RiceRolls.jpg", "Porridge.jpg", "ChickenWings.jpg", "Hamburg.jpg", "FrenchFries.jpg", "Coffee.jpg"};
+        String price_Guangzhou[] = {"¥12", "¥10", "¥12", "¥23", "¥11", "¥20"};
+        String commodity_Shanghai[] = {"Dumplings", "Treasures rice", "Hairy crabs", "Fried bun", "Rice balls", "Tea"};
+        String commodity_Shanghai_pic[] = {"Dumplings.jpg", "TreasuresRice.jpg", "HairyCrabs.jpg", "FriedBun.jpg", "RiceBalls.jpg", "Tea.jpg"};
+        String price_Shanghai[] = {"¥20", "¥15", "¥35", "¥18", "¥12", "¥10"};
+        String commodity_Beijing[] = {"Roast duck", "Sugar haws", "Noodles", "Boiled mutton", "Caramel treats", "Plum syrup"};
+        String commodity_Beijing_pic[] = {"RoastDuck.jpg", "SugarHaws.jpg", "Noodles.jpg", "BoiledMutton.jpg", "CaramelTreats.jpg", "PlumSyrup.jpg"};
+        String price_Beijing[] = {"¥45", "¥7", "¥12", "¥60", "¥8", "¥8"};
+
+        if (curCity.equals(city3) == true) {
+            model.addAttribute("commodity1", commodity_Guangzhou[0]);
+            model.addAttribute("commodity2", commodity_Guangzhou[1]);
+            model.addAttribute("commodity3", commodity_Guangzhou[2]);
+            model.addAttribute("commodity4", commodity_Guangzhou[3]);
+            model.addAttribute("commodity5", commodity_Guangzhou[4]);
+            model.addAttribute("commodity6", commodity_Guangzhou[5]);
+
+            model.addAttribute("commodity1_pic", commodity_Guangzhou_pic[0]);
+            model.addAttribute("commodity2_pic", commodity_Guangzhou_pic[1]);
+            model.addAttribute("commodity3_pic", commodity_Guangzhou_pic[2]);
+            model.addAttribute("commodity4_pic", commodity_Guangzhou_pic[3]);
+            model.addAttribute("commodity5_pic", commodity_Guangzhou_pic[4]);
+            model.addAttribute("commodity6_pic", commodity_Guangzhou_pic[5]);
+
+            model.addAttribute("price1", price_Guangzhou[0]);
+            model.addAttribute("price2", price_Guangzhou[1]);
+            model.addAttribute("price3", price_Guangzhou[2]);
+            model.addAttribute("price4", price_Guangzhou[3]);
+            model.addAttribute("price5", price_Guangzhou[4]);
+            model.addAttribute("price6", price_Guangzhou[5]);
+        } else if (curCity.equals(city1) == true) {
+            model.addAttribute("commodity1", commodity_Beijing[0]);
+            model.addAttribute("commodity2", commodity_Beijing[1]);
+            model.addAttribute("commodity3", commodity_Beijing[2]);
+            model.addAttribute("commodity4", commodity_Beijing[3]);
+            model.addAttribute("commodity5", commodity_Beijing[4]);
+            model.addAttribute("commodity6", commodity_Beijing[5]);
+
+            model.addAttribute("commodity1_pic", commodity_Beijing_pic[0]);
+            model.addAttribute("commodity2_pic", commodity_Beijing_pic[1]);
+            model.addAttribute("commodity3_pic", commodity_Beijing_pic[2]);
+            model.addAttribute("commodity4_pic", commodity_Beijing_pic[3]);
+            model.addAttribute("commodity5_pic", commodity_Beijing_pic[4]);
+            model.addAttribute("commodity6_pic", commodity_Beijing_pic[5]);
+
+            model.addAttribute("price1", price_Beijing[0]);
+            model.addAttribute("price2", price_Beijing[1]);
+            model.addAttribute("price3", price_Beijing[2]);
+            model.addAttribute("price4", price_Beijing[3]);
+            model.addAttribute("price5", price_Beijing[4]);
+            model.addAttribute("price6", price_Beijing[5]);
+        } else {
+            model.addAttribute("commodity1", commodity_Shanghai[0]);
+            model.addAttribute("commodity2", commodity_Shanghai[1]);
+            model.addAttribute("commodity3", commodity_Shanghai[2]);
+            model.addAttribute("commodity4", commodity_Shanghai[3]);
+            model.addAttribute("commodity5", commodity_Shanghai[4]);
+            model.addAttribute("commodity6", commodity_Shanghai[5]);
+
+            model.addAttribute("commodity1_pic", commodity_Shanghai_pic[0]);
+            model.addAttribute("commodity2_pic", commodity_Shanghai_pic[1]);
+            model.addAttribute("commodity3_pic", commodity_Shanghai_pic[2]);
+            model.addAttribute("commodity4_pic", commodity_Shanghai_pic[3]);
+            model.addAttribute("commodity5_pic", commodity_Shanghai_pic[4]);
+            model.addAttribute("commodity6_pic", commodity_Shanghai_pic[5]);
+
+            model.addAttribute("price1", price_Shanghai[0]);
+            model.addAttribute("price2", price_Shanghai[1]);
+            model.addAttribute("price3", price_Shanghai[2]);
+            model.addAttribute("price4", price_Shanghai[3]);
+            model.addAttribute("price5", price_Shanghai[4]);
+            model.addAttribute("price6", price_Shanghai[5]);
+        }
 
 
         Subject subject = SecurityUtils.getSubject();
@@ -56,28 +140,6 @@ public class IndexController {
             }
         }
 
-        model.addAttribute("curCity", curCity);
-
-        model.addAttribute("city1", city1);
-        model.addAttribute("city2", city2);
-        model.addAttribute("city3", city3);
-
-        model.addAttribute("commodity1", commodity[0]);
-        model.addAttribute("commodity2", commodity[1]);
-        model.addAttribute("commodity3", commodity[2]);
-        model.addAttribute("commodity4", commodity[3]);
-        model.addAttribute("commodity5", commodity[4]);
-        model.addAttribute("commodity6", commodity[5]);
-
-        model.addAttribute("price1", price[0]);
-        model.addAttribute("price2", price[1]);
-        model.addAttribute("price3", price[2]);
-        model.addAttribute("price4", price[3]);
-        model.addAttribute("price5", price[4]);
-        model.addAttribute("price6", price[5]);
-
-
-//        System.out.println("IndexController");
         return "index";
     }
 

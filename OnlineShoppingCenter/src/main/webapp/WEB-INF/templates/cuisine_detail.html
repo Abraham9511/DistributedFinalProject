@@ -2,14 +2,6 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!--<meta http-equiv="content-type" content="text/html; charset=UTF-8">-->
-    <!--<meta charset="utf-8">-->
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <!--<meta name="description" content="">-->
-    <!--<meta name="author" content="">-->
-    <!--<link rel="icon" href="http://v3.bootcss.com/favicon.ico">-->
-
     <style type="text/css">
 :root #content > #right > .dose > .dosesingle,
 :root #content > #center > .dose > .dosesingle
@@ -28,7 +20,8 @@
     <link href="/css/theme.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+   <script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/css/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -51,15 +44,6 @@
 
     <div class="container theme-showcase" role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <!--<div class="jumbotron">-->
-        <!--<h1 th:text="${commodity}"></h1>-->
-        <!--&lt;!&ndash;<p>This is a template for a simple marketing or informational&ndash;&gt;-->
-<!--&lt;!&ndash;website. It includes a large callout called a jumbotron and three&ndash;&gt;-->
-<!--&lt;!&ndash;supporting pieces of content. Use it as a starting point to create&ndash;&gt;-->
-<!--&lt;!&ndash;something more unique.</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more »</a></p>&ndash;&gt;-->
-      <!--</div>-->
 
       <div class="page-header">
         <h1 th:text="${commodity}"></h1>
@@ -72,17 +56,15 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="item">
-            <img alt="First slide [1140x500]" src="/images/RiceRolles1.jpg" data-holder-rendered="true">
+            <img alt="First slide [1140x500]" th:src="'/images/'+${commodity_pic1}" data-holder-rendered="true">
           </div>
           <div class="item">
-            <img  alt="Second slide [1140x500]" src="/images/RiceRolles2.jpg" data-holder-rendered="true">
+            <img  alt="Second slide [1140x500]" th:src="'/images/'+${commodity_pic2}" data-holder-rendered="true">
           </div>
           <div class="item active">
-            <img  alt="Third slide [1140x500]" src="/images/RiceRolles3.jpg" data-holder-rendered="true">
+            <img  alt="Third slide [1140x500]" th:src="'/images/'+${commodity_pic3}" data-holder-rendered="true">
           </div>
-            <!--data-src="holder.js/1140x500/auto/#777:#555/text:First slide"-->
-            <!--data-src="holder.js/1140x500/auto/#666:#444/text:Second slide"-->
-            <!--data-src="holder.js/1140x500/auto/#555:#333/text:Third slide"-->
+
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
@@ -95,10 +77,10 @@
       </div>
 
       <div class="page-header">
-        <h2>Price:$3</h2>
+        <h2 th:text="${commodity_Price}"></h2>
       </div>
       <div class="well">
-        <p>Chinese tradition food</p>
+        <p th:text="${commodity_Detail}"></p>
       </div>
 
 
